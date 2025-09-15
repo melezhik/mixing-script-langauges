@@ -19,8 +19,9 @@ class Pipeline
       $j.queue({
         description => "python job", 
         tags => %(
-        stage => "child",
+          stage => "child",
         ),
+        sparrowdo => %(:no_index_update),
       });
 
       # wait python job
