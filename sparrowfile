@@ -35,8 +35,17 @@ class Pipeline
       say "tags: ", tags().raku;
       my $j = Sparky::JobApi.new(:mine);
       my $state = $j.get-stash();
-      say %state.raku;
 
+      directory "scm";
+
+      git-scm 'https://github.com/melezhik/mixing-script-langauges.git', %(
+        :to<scm>,
+        :branch<main>,
+      );
+
+      task-run "scm/files/tasks/python", %(
+        :lines(%state<lines>),
+      ),
   }
 
 }
