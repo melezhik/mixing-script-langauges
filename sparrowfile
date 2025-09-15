@@ -44,7 +44,7 @@ class Pipeline
       );
 
       task-run "scm/files/tasks/python", %(
-        :lines(%state<lines>),
+        :lines($state<lines>),
       ),
   }
 
