@@ -1,0 +1,44 @@
+use Sparky::JobApi;
+
+class Pipeline
+
+  does Sparky::JobApi::Role
+
+  {
+
+    method stage-main {
+
+      my $j = self.new-job;
+
+      my %s = task-run "files/tasks/perl";
+  
+      say %s<lines>.raku;
+
+      $j.put-stash(%s);
+
+      $j.queue({
+        description => "python job", 
+        tags => %(
+        stage => "child",
+        ),
+      });
+
+      # wait python job
+      my $st = self.wait-job($j);
+      die unless $st<OK>;
+  
+    } 
+
+    method stage-child {
+
+      say "I am a child scenario";
+      say "tags: ", tags().raku;
+      my $j = Sparky::JobApi.new(:mine);
+      my $state = $j.get-stash();
+      say %state.raku;
+
+  }
+
+}
+
+Pipeline.new.run;
