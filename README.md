@@ -9,14 +9,14 @@ https://nextflow.io/mixing-scripting-languages.html
 
 ## Main job
 
-[main-job.jpeg](screenshots/main-job.jpeg)
+![main-job.jpeg](screenshots/main-job.jpeg)
 
 
 ## Jobs
 
-[child-job.jpeg](screenshots/child-job.jpeg)
+![child-job.jpeg](screenshots/child-job.jpeg)
 
 
 ## Python job
 
-[python-job.jpeg](screenshots/python-job.jpeg)
+![python-job.jpeg](screenshots/python-job.jpeg)
